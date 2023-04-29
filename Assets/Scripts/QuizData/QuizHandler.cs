@@ -8,6 +8,7 @@ using TMPro;
 public class QuizHandler : MonoBehaviour
 {
     [Header("Objects")]
+    [SerializeField] private TMP_Text _QuizTitleText;
     [SerializeField] private TMP_Text _QuestionText;
     [SerializeField] private Sprite _QuestionImage;
     [SerializeField] private TMP_InputField _AnswerInputField;
@@ -21,6 +22,9 @@ public class QuizHandler : MonoBehaviour
 
     private void Start()
     {
+        _QuizTitleText.text = quizData.name;
+
+        //On QuizData change
         DisplayQuestion(quizData.questions[currentQuestion]);
     }
 
