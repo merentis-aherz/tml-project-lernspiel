@@ -13,19 +13,16 @@ public class CheckTheAnswerType : MonoBehaviour
 
     public void Start()
     {
-        quizData.questions[0].AnswerType.Text TextType = new quizData.questions[0].AnswerType.Text;
-        quizData.questions[0].AnswerType.MultipleChoice MultipleChoiceType = new quizData.questions[0].AnswerType.MultipleChoice;
-
         _GIFQD = GameObject.Find("Manager").GetComponent<GetInfoFromQuizData>();
 
         switch (quizData.answertype)
         {
-            case TextType:
+            case Question.AnswerType.Text:
                 _Text = true;
                 _MultipleChoice = false;
                 break;
 
-            case MultipleChoiceType:
+            case Question.AnswerType.MultipleChoice:
                 _MultipleChoice = true;
                 _Text = false;
                 break;

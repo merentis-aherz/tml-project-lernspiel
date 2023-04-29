@@ -5,16 +5,16 @@ using UnityEngine.UI;
 
 public class GetInfoFromQuizData : MonoBehaviour
 {
-    public TMP_Text QuestionText;
-    public TMP_InputField AnswerInputField;
-    public Button SubmitButton;
+    public TMP_Text questionText;
+    public TMP_InputField answerInputField;
+    public Button submitButton;
     public QuizData[] quizData;
 
     [HideInInspector]
-    public int CurrentQuestion;
-    public int HowManyQuestions;
+    public int currentQuestion;
+    public int howManyQuestions;
 
-    public bool QuizIsDone;
+    public bool quizIsDone;
 
     public bool text;
     public bool multipleChoice;
@@ -22,19 +22,19 @@ public class GetInfoFromQuizData : MonoBehaviour
     void Start()
     {
         //sets variables
-        CurrentQuestion = 0;
-        HowManyQuestions = quizData[0].questions[CurrentQuestion].answers[0].Length;
-        QuestionText.text = quizData[0].questions[CurrentQuestion].question;
+        currentQuestion = 0;
+        howManyQuestions = quizData[0].questions[currentQuestion].answers[0].Length;
+        questionText.text = quizData[0].questions[currentQuestion].question;
     }
 
     public void Submitted()
     {
         //Submitting the answer
-        if (!QuizIsDone)
+        if (!quizIsDone)
         {
             if (text)
             {
-                if (AnswerInputField.text == quizData[0].questions[CurrentQuestion].answers[0])
+                if (answerInputField.text == quizData[0].questions[currentQuestion].answers[0])
                 {
                     Debug.Log("Right");
                 }
@@ -44,15 +44,15 @@ public class GetInfoFromQuizData : MonoBehaviour
                 }
             }
 
-            CurrentQuestion++;
-            if (CurrentQuestion <= HowManyQuestions)
+            currentQuestion++;
+            if (currentQuestion <= howManyQuestions)
             {
-                QuestionText.text = quizData[0].questions[CurrentQuestion].question;
+                questionText.text = quizData[0].questions[currentQuestion].question;
             }
             else
             {
                 Debug.Log("QuizDone");
-                QuizIsDone = true;
+                quizIsDone = true;
             }
         }
         else

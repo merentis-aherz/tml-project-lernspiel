@@ -18,7 +18,7 @@ public class Question
 
     public string question;
     public Sprite image;
-    public AnswerType answertype;
+    public AnswerType answerType;
     public string[] answers;
 }
 
