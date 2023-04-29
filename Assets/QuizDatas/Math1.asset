@@ -16,12 +16,19 @@ MonoBehaviour:
   questions:
   - question: 1+1 = ?
     image: {fileID: 0}
-    answertype: 0
-    answers:
+    answerType: 0
+    correctAnswers:
     - 2
+    wrongAnswers: []
   - question: 2+2 = ?
     image: {fileID: 0}
-    answertype: 0
-    answers:
+    answerType: 0
+    correctAnswers:
     - 4
-  answertype: 0
+    wrongAnswers: []
+  - question: 4+3 = ?
+    image: {fileID: 0}
+    answerType: 0
+    correctAnswers:
+    - 7
+    wrongAnswers: []

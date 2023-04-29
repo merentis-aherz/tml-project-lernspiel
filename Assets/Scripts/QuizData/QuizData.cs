@@ -8,17 +8,17 @@ public class QuizData : ScriptableObject
 {
     public string quizName;
     public List<Question> questions;
-    public Question.AnswerType answertype;
 }
 
 [System.Serializable]
 public class Question
 {
-    public enum AnswerType { Text, MultipleChoice }
+    public enum AnswerType { Text, Number, MultipleChoice }
 
     public string question;
     public Sprite image;
     public AnswerType answerType;
-    public string[] answers;
+    public string[] correctAnswers;
+    public string[] wrongAnswers;
 }
 

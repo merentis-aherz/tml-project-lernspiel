@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -53,7 +54,7 @@ public class QuizHandler : MonoBehaviour
         switch (quizData.questions[currentQuestion].answerType)
         {
             case Question.AnswerType.Text:
-                if (_AnswerInputField.text == quizData.questions[currentQuestion].answers[0])
+                if (quizData.questions[currentQuestion].correctAnswers.Contains(_AnswerInputField.text))
                 {
                     print("Correct Answer");
                 }
@@ -64,7 +65,7 @@ public class QuizHandler : MonoBehaviour
                 break;
 
             case Question.AnswerType.MultipleChoice:
-                throw new System.NotImplementedException();
+                throw new System.NotImplementedException("Multiple Choice");
                 //break;
         }
     }
