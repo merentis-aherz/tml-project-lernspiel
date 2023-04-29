@@ -8,6 +8,7 @@ public class QuizData : ScriptableObject
 {
     public string quizName;
     public List<Question> questions;
+    public Question.AnswerType answertype;
 }
 
 [System.Serializable]
@@ -20,3 +21,4 @@ public class Question
     public AnswerType answertype;
     public string[] answers;
 }
+
