@@ -11,7 +11,8 @@ public class QuizHandler : MonoBehaviour
     [SerializeField] private TMP_Text _QuizTitleText;
     [SerializeField] private TMP_Text _QuestionText;
     [SerializeField] private Sprite _QuestionImage;
-    [SerializeField] private TMP_InputField _AnswerInputField;
+    [SerializeField] private GameObject _TextInputArea, _NumberInputArea, _MultipleChoiceInputArea;
+    [SerializeField] private TMP_InputField _AnswerTextInputField, _AnswerNumberInputField;
 
     [Header("Set")]
     public QuizData quizData;
@@ -22,6 +23,8 @@ public class QuizHandler : MonoBehaviour
 
     private void Start()
     {
+        ///Get QuizData
+
         _QuizTitleText.text = quizData.name;
 
         //On QuizData change
@@ -34,7 +37,7 @@ public class QuizHandler : MonoBehaviour
             return;
 
         CheckAnswer();
-        //DisplayCorrectAnswer();
+        ///DisplayCorrectAnswer();
         currentQuestion++;
         if (currentQuestion < quizData.questions.Count)
         {
@@ -53,7 +56,9 @@ public class QuizHandler : MonoBehaviour
         if (question.image != null)
             _QuestionImage = question.image;
 
-        //Need to change the input of the answers
+        _TextInputArea.SetActive(quizData.questions[currentQuestion].answerType == Question.AnswerType.Text);
+        _NumberInputArea.SetActive(quizData.questions[currentQuestion].answerType == Question.AnswerType.Number);
+        _MultipleChoiceInputArea.SetActive(quizData.questions[currentQuestion].answerType == Question.AnswerType.MultipleChoice);
     }
 
     void CheckAnswer()
@@ -61,7 +66,7 @@ public class QuizHandler : MonoBehaviour
         switch (quizData.questions[currentQuestion].answerType)
         {
             case Question.AnswerType.Text:
-                if (quizData.questions[currentQuestion].textAnswers.CheckForText(_AnswerInputField.text))
+                if (quizData.questions[currentQuestion].textAnswers.CheckForText(_AnswerTextInputField.text))
                 {
                     print("Correct Answer");
                 }
@@ -72,8 +77,7 @@ public class QuizHandler : MonoBehaviour
                 break;
 
             case Question.AnswerType.Number:
-                throw new System.NotImplementedException("Multiple Choice");
-                if (quizData.questions[currentQuestion].numberAnswers.CheckForNumber(float.Parse(_AnswerInputField.text)))
+                if (quizData.questions[currentQuestion].numberAnswers.CheckForNumber(float.Parse(_AnswerNumberInputField.text)))
                 {
                     print("Correct Answer");
                 }

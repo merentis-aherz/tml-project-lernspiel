@@ -16,18 +16,41 @@ MonoBehaviour:
   - question: 1+1 = ?
     image: {fileID: 0}
     answerType: 0
-    correctAnswers:
-    - 2
-    wrongAnswers: []
+    textAnswers:
+    - value: 2
+      capitalSpecific: 0
+    - value: two
+      capitalSpecific: 0
+    textWrongExplanation: 
+    numberAnswers: []
+    multipleChoiceAnswers: []
   - question: 2+2 = ?
     image: {fileID: 0}
-    answerType: 0
-    correctAnswers:
-    - 4
-    wrongAnswers: []
+    answerType: 1
+    textAnswers: []
+    textWrongExplanation: 
+    numberAnswers:
+    - compareType: 0
+      value: 4
+    - compareType: 1
+      value: 4
+    multipleChoiceAnswers: []
   - question: 4+3 = ?
     image: {fileID: 0}
-    answerType: 0
-    correctAnswers:
-    - 7
-    wrongAnswers: []
+    answerType: 2
+    textAnswers: []
+    textWrongExplanation: 
+    numberAnswers: []
+    multipleChoiceAnswers:
+    - correct: 0
+      value: 8
+      wrongExplanation: 
+    - correct: 0
+      value: 9
+      wrongExplanation: 
+    - correct: 0
+      value: 6
+      wrongExplanation: 
+    - correct: 1
+      value: 7
+      wrongExplanation: 
