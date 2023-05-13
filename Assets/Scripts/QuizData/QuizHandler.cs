@@ -30,6 +30,9 @@ public class QuizHandler : MonoBehaviour
 
     public void OnClickSubmit()
     {
+        if (quizFinished)
+            return;
+
         CheckAnswer();
         //DisplayCorrectAnswer();
         currentQuestion++;
