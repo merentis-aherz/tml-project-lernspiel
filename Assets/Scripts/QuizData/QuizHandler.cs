@@ -61,7 +61,7 @@ public class QuizHandler : MonoBehaviour
         switch (quizData.questions[currentQuestion].answerType)
         {
             case Question.AnswerType.Text:
-                if (quizData.questions[currentQuestion].correctAnswers.Contains(_AnswerInputField.text))
+                if (quizData.questions[currentQuestion].textAnswers.CheckForText(_AnswerInputField.text))
                 {
                     print("Correct Answer");
                 }
@@ -70,6 +70,10 @@ public class QuizHandler : MonoBehaviour
                     print("Wrong Answer");
                 }
                 break;
+
+            case Question.AnswerType.Number:
+            throw new System.NotImplementedException("Number");
+                //break;
 
             case Question.AnswerType.MultipleChoice:
                 throw new System.NotImplementedException("Multiple Choice");
