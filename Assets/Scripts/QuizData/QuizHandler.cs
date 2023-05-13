@@ -72,12 +72,28 @@ public class QuizHandler : MonoBehaviour
                 break;
 
             case Question.AnswerType.Number:
-            throw new System.NotImplementedException("Number");
-                //break;
+                throw new System.NotImplementedException("Multiple Choice");
+                if (quizData.questions[currentQuestion].numberAnswers.CheckForNumber(float.Parse(_AnswerInputField.text)))
+                {
+                    print("Correct Answer");
+                }
+                else
+                {
+                    print("Wrong Answer");
+                }
+                break;
 
             case Question.AnswerType.MultipleChoice:
                 throw new System.NotImplementedException("Multiple Choice");
-                //break;
+                if (quizData.questions[currentQuestion].multipleChoiceAnswers.CheckForMultipleChoice(0))
+                {
+                    print("Correct Answer");
+                }
+                else
+                {
+                    print("Wrong Answer");
+                }
+                break;
         }
     }
 }
