@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac41d8ed35521141a7be2d7dcb909a6, type: 3}
+  m_Name: MathQuiz Grade 2 subtraction 1
+  m_EditorClassIdentifier: 
+  questions:
+  - question: 21 - 13 = ?
+    image: {fileID: 0}
+    answerType: 1
+    textAnswers: []
+    textWrongExplanation: 
+    numberAnswers:
+    - correct: 1
+      compareType: 0
+      value: 8
+    multipleChoiceAnswers: []
+  - question: 36 - 22 = ?
+    image: {fileID: 0}
+    answerType: 1
+    textAnswers: []
+    textWrongExplanation: 
+    numberAnswers:
+    - correct: 1
+      compareType: 0
+      value: 12
+    multipleChoiceAnswers: []
+  - question: 45 - 16 = ?
+    image: {fileID: 0}
+    answerType: 1
+    textAnswers: []
+    textWrongExplanation: 
+    numberAnswers:
+    - correct: 1
+      compareType: 0
+      value: 29
+    multipleChoiceAnswers: []
+  - question: 73 - 25 = ?
+    image: {fileID: 0}
+    answerType: 1
+    textAnswers: []
+    textWrongExplanation: 
+    numberAnswers:
+    - correct: 1
+      compareType: 0
+      value: 48
+    multipleChoiceAnswers: []
+  - question: 103 - 38 = ?
+    image: {fileID: 0}
+    answerType: 1
+    textAnswers: []
+    textWrongExplanation: 
+    numberAnswers:
+    - correct: 1
+      compareType: 0
+      value: 65
+    multipleChoiceAnswers: []

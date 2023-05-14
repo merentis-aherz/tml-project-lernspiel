@@ -11,4 +11,14 @@ public class SelectedQuiz : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
     }
+
+    public void SetQuiz(QuizData data)
+    {
+        EquipedQuiz = data;
+    }
+
+    public void SetTimeLimit(float value)
+    {
+        TimeLimit = value;
+    }
 }
