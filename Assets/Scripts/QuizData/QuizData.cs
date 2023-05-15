@@ -30,7 +30,6 @@ public class Question
     [System.Serializable]
     public class TextAnswer
     {
-        public bool correct = true;
         public string value;
         public bool capitalSpecific;
     }
@@ -39,7 +38,6 @@ public class Question
     public class NumberAnswer
     {
         public enum CompareType { Equal, Less, Greater, EqualOrLess, EqualOrGreater, NotEqual }
-        public bool correct = true;
         public CompareType compareType;
         public float value;
     }
@@ -59,7 +57,7 @@ public static class QuestionClass
     {
         foreach (Question.TextAnswer t in textAnswers)
             if (t.capitalSpecific ? input == t.value : input.ToLower() == t.value.ToLower())
-                return t.correct;
+                return true;
         return false;
     }
 
@@ -70,27 +68,27 @@ public static class QuestionClass
             {
                 case Question.NumberAnswer.CompareType.Equal:
                     if (input == n.value)
-                        return n.correct;
+                        return true;
                     break;
                 case Question.NumberAnswer.CompareType.Less:
                     if (input < n.value)
-                        return n.correct;
+                        return true;
                     break;
                 case Question.NumberAnswer.CompareType.Greater:
                     if (input > n.value)
-                        return n.correct;
+                        return true;
                     break;
                 case Question.NumberAnswer.CompareType.EqualOrLess:
                     if (input <= n.value)
-                        return n.correct;
+                        return true;
                     break;
                 case Question.NumberAnswer.CompareType.EqualOrGreater:
                     if (input >= n.value)
-                        return n.correct;
+                        return true;
                     break;
                 case Question.NumberAnswer.CompareType.NotEqual:
                     if (input != n.value)
-                        return n.correct;
+                        return true;
                     break;
             }
         return false;
