@@ -18,12 +18,9 @@ public class Question
     public string question;
     public Sprite image;
     public AnswerType answerType;
-
-    public List<TextAnswer> textAnswers;
     [TextArea(1, 5)] public string textWrongExplanation;
-
+    public List<TextAnswer> textAnswers;
     public List<NumberAnswer> numberAnswers;
-
     public List<MultipleChoiceAnswer> multipleChoiceAnswers;
 
 

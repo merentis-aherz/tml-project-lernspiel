@@ -27,7 +27,9 @@ public class QuizHandler : MonoBehaviour
     private void Start()
     {
         //Get QuizData
-        quizData = FindObjectOfType<SelectedQuiz>().EquipedQuiz;
+        SelectedQuiz selectedQuiz = FindObjectOfType<SelectedQuiz>();
+        if (selectedQuiz != null)
+            quizData = selectedQuiz.EquipedQuiz;
 
         _QuizTitleText.text = quizData.name;
 
@@ -54,8 +56,12 @@ public class QuizHandler : MonoBehaviour
                 return;
         }
 
+        //Clears InputFields
+        _AnswerTextInputField.text = "";
+        _AnswerNumberInputField.text = "";
+
         ///DisplayCorrectAnswer();
-        
+
         currentQuestion++;
 
         if (currentQuestion < quizData.questions.Count)
