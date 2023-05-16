@@ -26,7 +26,8 @@ public class QuizHandler : MonoBehaviour
 
     private void Start()
     {
-        ///Get QuizData
+        //Get QuizData
+        quizData = FindObjectOfType<SelectedQuiz>().EquipedQuiz;
 
         _QuizTitleText.text = quizData.name;
 
