@@ -50,7 +50,7 @@ public class Question
 
 public static class QuestionClass
 {
-    public static bool CheckForText(this List<Question.TextAnswer> textAnswers, string input)
+    public static (bool, string) CheckForText(this List<Question.TextAnswer> textAnswers, string input)
     {
         foreach (Question.TextAnswer t in textAnswers)
             if (t.capitalSpecific ? input == t.value : input.ToLower() == t.value.ToLower())
@@ -58,7 +58,7 @@ public static class QuestionClass
         return false;
     }
 
-    public static bool CheckForNumber(this List<Question.NumberAnswer> numberAnswers, float input)
+    public static (bool, string) CheckForNumber(this List<Question.NumberAnswer> numberAnswers, float input)
     {
         foreach (Question.NumberAnswer n in numberAnswers)
             switch (n.compareType)
@@ -91,8 +91,8 @@ public static class QuestionClass
         return false;
     }
 
-    public static bool CheckForMultipleChoice(this List<Question.MultipleChoiceAnswer> multipleChoiceAnswers, int input)
+    public static (bool, string) CheckForMultipleChoice(this List<Question.MultipleChoiceAnswer> multipleChoiceAnswers, int input)
     {
-        return multipleChoiceAnswers[input].correct;
+        return (multipleChoiceAnswers[input].correct, multipleChoiceAnswers[input].wrongExplanation);
     }
 }

@@ -6,13 +6,17 @@ using TMPro;
 
 public class QuizHandler : MonoBehaviour
 {
+    [Header("Components")]
+    [SerializeField] private QuizMover quizMover;
+
     [Header("Objects")]
     [SerializeField] private TMP_Text _QuizTitleText;
-    [SerializeField] private TMP_Text _QuestionText;
+    [SerializeField] private TMP_Text _QuestionText, _ExplanationText;
     [SerializeField] private Sprite _QuestionImage;
     [SerializeField] private GameObject _TextInputArea, _NumberInputArea, _MultipleChoiceInputArea;
     [SerializeField] private TMP_InputField _AnswerTextInputField, _AnswerNumberInputField;
     [SerializeField] private GameObject _MultipleChoiceButtonPrefab;
+    [SerializeField] private GameObject _SubmitButton, _NextButton;
 
     [Header("Set")]
     public QuizData quizData;
@@ -45,27 +49,43 @@ public class QuizHandler : MonoBehaviour
         switch (CheckAnswer())
         {
             case true:
+                DisplayExplanation();
                 print("Correct Answer");
                 break;
 
             case false:
+                DisplayExplanation();
                 print("Wrong Answer");
                 break;
 
             case null:
                 return;
         }
+    }
 
+    void DisplayExplanation()
+    {
+        _ExplanationText.text = 
+        quizMover.SetDisplayExplanation(true);
+
+        _SubmitButton.SetActive(false);
+        _NextButton.SetActive(true);
+    }
+
+    public void OnClickNext()
+    {
         //Clears InputFields
         _AnswerTextInputField.text = "";
         _AnswerNumberInputField.text = "";
 
-        ///DisplayCorrectAnswer();
+        quizMover.SetDisplayExplanation(false);
 
         currentQuestion++;
 
         if (currentQuestion < quizData.questions.Count)
         {
+            _SubmitButton.SetActive(true);
+            _NextButton.SetActive(false);
             DisplayQuestion(quizData.questions[currentQuestion]);
         }
         else
