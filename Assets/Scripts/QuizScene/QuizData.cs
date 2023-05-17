@@ -57,7 +57,7 @@ public static class QuestionClass
     {
         foreach (Question.TextAnswer t in textAnswers)
             if (t.capitalSpecific ? input == t.value : input.ToLower() == t.value.ToLower())
-                return (true, null);
+                return (t.correct, t.explanation);
         return (false, null);
     }
 
