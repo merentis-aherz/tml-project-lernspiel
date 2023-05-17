@@ -150,3 +150,41 @@ MonoBehaviour:
     - correct: 1
       value: Osmanisches Reich
       wrongExplanation: 
+  - question: "Wann erkl\xE4rten die USA Deutschland den Krieg?"
+    image: {fileID: 0}
+    answerType: 2
+    textWrongExplanation: 
+    textAnswers: []
+    numberAnswers: []
+    multipleChoiceAnswers:
+    - correct: 0
+      value: 22. Mai 1916
+      wrongExplanation: 
+    - correct: 0
+      value: 16. Januar 1915
+      wrongExplanation: 
+    - correct: 1
+      value: 6. April 1917
+      wrongExplanation: 
+    - correct: 0
+      value: 1. April 1918
+      wrongExplanation: 
+  - question: Welcher Reichskanzler ersuchte die  Alliierten um einen Waffenstillstand?
+    image: {fileID: 0}
+    answerType: 2
+    textWrongExplanation: 
+    textAnswers: []
+    numberAnswers: []
+    multipleChoiceAnswers:
+    - correct: 1
+      value: Max von Baden
+      wrongExplanation: 
+    - correct: 0
+      value: Wilhelm II.
+      wrongExplanation: 
+    - correct: 0
+      value: Alfred Hitler
+      wrongExplanation: 
+    - correct: 0
+      value: Philipp Liebknecht
+      wrongExplanation: 
