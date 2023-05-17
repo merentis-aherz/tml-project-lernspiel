@@ -5,7 +5,7 @@ using UnityEngine;
 public class SelectedQuiz : MonoBehaviour
 {
     public QuizData EquipedQuiz;
-    public float TimeLimit;
+    public int TimeLimit;
 
     public void Start()
     {
@@ -19,6 +19,6 @@ public class SelectedQuiz : MonoBehaviour
 
     public void SetTimeLimit(float value)
     {
-        TimeLimit = value;
+        TimeLimit = (int)value;
     }
 }

@@ -1,0 +1,152 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac41d8ed35521141a7be2d7dcb909a6, type: 3}
+  m_Name: World War 1
+  m_EditorClassIdentifier: 
+  questions:
+  - question: In welchen jahr ist der erste Welltkrieg gestartet
+    image: {fileID: 0}
+    answerType: 2
+    textWrongExplanation: 
+    textAnswers: []
+    numberAnswers: []
+    multipleChoiceAnswers:
+    - correct: 0
+      value: 1918
+      wrongExplanation: 
+    - correct: 0
+      value: 1939
+      wrongExplanation: 
+    - correct: 1
+      value: 1914
+      wrongExplanation: 
+    - correct: 0
+      value: 1945
+      wrongExplanation: 
+  - question: "Auf wen wurde am 28. Juni 1914 ein Attentat ver\xFCbt, welches als
+      Ausl\xF6ser f\xFCr den 1. Weltkrieg galt?"
+    image: {fileID: 0}
+    answerType: 2
+    textWrongExplanation: 
+    textAnswers: []
+    numberAnswers: []
+    multipleChoiceAnswers:
+    - correct: 0
+      value: Kaiser Wilhelm II.
+      wrongExplanation: 
+    - correct: 0
+      value: Max von Baden
+      wrongExplanation: 
+    - correct: 1
+      value: Franz Ferdinand
+      wrongExplanation: 
+    - correct: 0
+      value: General Eisenhower
+      wrongExplanation: 
+  - question: In welcher Stadt wurde Franz Ferdinand ermordet?
+    image: {fileID: 0}
+    answerType: 2
+    textWrongExplanation: 
+    textAnswers: []
+    numberAnswers: []
+    multipleChoiceAnswers:
+    - correct: 1
+      value: Sarajevo
+      wrongExplanation: 
+    - correct: 0
+      value: Berlin
+      wrongExplanation: 
+    - correct: 0
+      value: Prag
+      wrongExplanation: 
+    - correct: 0
+      value: Wien
+      wrongExplanation: 
+  - question: Wie wurde der Plan genannt, mit dem das Deutsche Kaiserreich in einem
+      Zweifrontenkrieg erfolgreich sein sollte?
+    image: {fileID: 0}
+    answerType: 2
+    textWrongExplanation: 
+    textAnswers: []
+    numberAnswers: []
+    multipleChoiceAnswers:
+    - correct: 0
+      value: Westaufmarsch
+      wrongExplanation: 
+    - correct: 1
+      value: Schlieffen-Plan
+      wrongExplanation: 
+    - correct: 0
+      value: Moltke-Strategie
+      wrongExplanation: 
+    - correct: 0
+      value: Barbarossa
+      wrongExplanation: 
+  - question: "Wann erkl\xE4rte das Deutsche Kaiserreich Russland den Krieg?"
+    image: {fileID: 0}
+    answerType: 2
+    textWrongExplanation: 
+    textAnswers: []
+    numberAnswers: []
+    multipleChoiceAnswers:
+    - correct: 0
+      value: 8. Februar 1916
+      wrongExplanation: 
+    - correct: 0
+      value: 13. Januar 1915
+      wrongExplanation: 
+    - correct: 0
+      value: 28. Oktober 1917
+      wrongExplanation: 
+    - correct: 1
+      value: 1. August 1914
+      wrongExplanation: 
+  - question: "Als Deutsche Truppen sich n\xE4her an Paris herangek\xE4mpft hatten.
+      In welche Stadt wurde der Sitz der franz\xF6sischen Regierung verlegt?"
+    image: {fileID: 0}
+    answerType: 2
+    textWrongExplanation: 
+    textAnswers: []
+    numberAnswers: []
+    multipleChoiceAnswers:
+    - correct: 1
+      value: Bordeaux
+      wrongExplanation: 
+    - correct: 0
+      value: Toulouse
+      wrongExplanation: 
+    - correct: 0
+      value: 'Lyon '
+      wrongExplanation: 
+    - correct: 0
+      value: Nizza
+      wrongExplanation: 
+  - question: "Wir wurde das T\xFCrkische Reich zu Zeiten des 1. Weltkrieges noch
+      genannt?"
+    image: {fileID: 0}
+    answerType: 2
+    textWrongExplanation: 
+    textAnswers: []
+    numberAnswers: []
+    multipleChoiceAnswers:
+    - correct: 0
+      value: Reich des Nordens
+      wrongExplanation: 
+    - correct: 0
+      value: Mazedonisches Reich
+      wrongExplanation: 
+    - correct: 0
+      value: 'Antalya Reich '
+      wrongExplanation: 
+    - correct: 1
+      value: Osmanisches Reich
+      wrongExplanation: 
