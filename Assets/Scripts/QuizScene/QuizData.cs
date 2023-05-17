@@ -18,7 +18,6 @@ public class Question
     public string question;
     public Sprite image;
     public AnswerType answerType;
-    [TextArea(1, 5)] public string textWrongExplanation;
     public List<TextAnswer> textAnswers;
     public List<NumberAnswer> numberAnswers;
     public List<MultipleChoiceAnswer> multipleChoiceAnswers;
@@ -27,16 +26,20 @@ public class Question
     [System.Serializable]
     public class TextAnswer
     {
+        public bool correct = true;
         public string value;
         public bool capitalSpecific;
+        [TextArea(1, 5)] public string explanation;
     }
 
     [System.Serializable]
     public class NumberAnswer
     {
+        public bool correct = true;
+        public float value;
         public enum CompareType { Equal, Less, Greater, EqualOrLess, EqualOrGreater, NotEqual }
         public CompareType compareType;
-        public float value;
+        [TextArea(1, 5)] public string explanation;
     }
 
     [System.Serializable]
@@ -44,7 +47,7 @@ public class Question
     {
         public bool correct = true;
         public string value;
-        [TextArea(1, 5)] public string wrongExplanation;
+        [TextArea(1, 5)] public string explanation;
     }
 }
 
@@ -93,6 +96,6 @@ public static class QuestionClass
 
     public static (bool, string) CheckForMultipleChoice(this List<Question.MultipleChoiceAnswer> multipleChoiceAnswers, int input)
     {
-        return (multipleChoiceAnswers[input].correct, multipleChoiceAnswers[input].wrongExplanation);
+        return (multipleChoiceAnswers[input].correct, multipleChoiceAnswers[input].explanation);
     }
 }
