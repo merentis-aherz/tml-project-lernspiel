@@ -65,7 +65,7 @@ public class QuizHandler : MonoBehaviour
 
     void DisplayExplanation()
     {
-        _ExplanationText.text = 
+        _ExplanationText.text = "null";
         quizMover.SetDisplayExplanation(true);
 
         _SubmitButton.SetActive(false);
@@ -146,19 +146,19 @@ public class QuizHandler : MonoBehaviour
         {
             case Question.AnswerType.Text:
                 if (_AnswerTextInputField.text != "")
-                    return quizData.questions[currentQuestion].textAnswers.CheckForText(_AnswerTextInputField.text);
+                    return quizData.questions[currentQuestion].textAnswers.CheckForText(_AnswerTextInputField.text).Item1;
                 else
                     return null;
 
             case Question.AnswerType.Number:
                 if (_AnswerNumberInputField.text != "")
-                    return quizData.questions[currentQuestion].numberAnswers.CheckForNumber(float.Parse(_AnswerNumberInputField.text));
+                    return quizData.questions[currentQuestion].numberAnswers.CheckForNumber(float.Parse(_AnswerNumberInputField.text)).Item1;
                 else
                     return null;
 
             case Question.AnswerType.MultipleChoice:
                 if (multipleChoiceSelected > 0)
-                    return quizData.questions[currentQuestion].multipleChoiceAnswers.CheckForMultipleChoice(multipleChoiceSelected);
+                    return quizData.questions[currentQuestion].multipleChoiceAnswers.CheckForMultipleChoice(multipleChoiceSelected).Item1;
                 else
                     return null;
         }
