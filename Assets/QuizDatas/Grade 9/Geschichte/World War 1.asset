@@ -188,3 +188,22 @@ MonoBehaviour:
     - correct: 0
       value: Philipp Liebknecht
       wrongExplanation: 
+  - question: In welchem Jahr endete der 1. Weltkrieg?
+    image: {fileID: 0}
+    answerType: 2
+    textWrongExplanation: 
+    textAnswers: []
+    numberAnswers: []
+    multipleChoiceAnswers:
+    - correct: 0
+      value: 1945
+      wrongExplanation: 
+    - correct: 0
+      value: 1939
+      wrongExplanation: 
+    - correct: 1
+      value: 1918
+      wrongExplanation: 
+    - correct: 0
+      value: 1914
+      wrongExplanation: 
