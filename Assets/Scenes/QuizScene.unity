@@ -1788,6 +1788,7 @@ MonoBehaviour:
   quizMover: {fileID: 169248221}
   _QuizTitleText: {fileID: 390278077}
   _QuestionText: {fileID: 1076594296}
+  _ExplanationText: {fileID: 996440423}
   _QuestionImage: {fileID: 0}
   _TextInputArea: {fileID: 2080171084}
   _NumberInputArea: {fileID: 1429178724}
@@ -1797,7 +1798,7 @@ MonoBehaviour:
   _MultipleChoiceButtonPrefab: {fileID: 237242256241751295, guid: 4cca46b9f106264438bcf05ae069a0fc, type: 3}
   _SubmitButton: {fileID: 766029037}
   _NextButton: {fileID: 466531858}
-  quizData: {fileID: 11400000, guid: 5ea5644542edf5a4ca9dcc15e16a4eea, type: 2}
+  quizData: {fileID: 11400000, guid: 924715f56bafa4744b8a0b9305a6fa2d, type: 2}
   quizFinished: 0
 --- !u!1 &1243035993
 GameObject:
