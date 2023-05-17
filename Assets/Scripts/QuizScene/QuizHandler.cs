@@ -49,12 +49,12 @@ public class QuizHandler : MonoBehaviour
         switch (CheckAnswer())
         {
             case true:
-                DisplayExplanation();
+                DisplayExplanation(true);
                 print("Correct Answer");
                 break;
 
             case false:
-                DisplayExplanation();
+                DisplayExplanation(false);
                 print("Wrong Answer");
                 break;
 
@@ -63,9 +63,17 @@ public class QuizHandler : MonoBehaviour
         }
     }
 
-    void DisplayExplanation()
+    void DisplayExplanation(bool answer)
     {
-        _ExplanationText.text = "null";
+        //_ExplanationText.text = "null";
+        if(answer)
+        {
+            _ExplanationText.text = "Richtig!";
+        }
+        else
+        {
+            _ExplanationText.text = "Falsch!";
+        }
         quizMover.SetDisplayExplanation(true);
 
         _SubmitButton.SetActive(false);
