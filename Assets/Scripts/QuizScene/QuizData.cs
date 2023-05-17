@@ -54,8 +54,8 @@ public static class QuestionClass
     {
         foreach (Question.TextAnswer t in textAnswers)
             if (t.capitalSpecific ? input == t.value : input.ToLower() == t.value.ToLower())
-                return true;
-        return false;
+                return (true, null);
+        return (false, null);
     }
 
     public static (bool, string) CheckForNumber(this List<Question.NumberAnswer> numberAnswers, float input)
@@ -65,30 +65,30 @@ public static class QuestionClass
             {
                 case Question.NumberAnswer.CompareType.Equal:
                     if (input == n.value)
-                        return true;
+                        return (true, null);
                     break;
                 case Question.NumberAnswer.CompareType.Less:
                     if (input < n.value)
-                        return true;
+                        return (true, null);
                     break;
                 case Question.NumberAnswer.CompareType.Greater:
                     if (input > n.value)
-                        return true;
+                        return (true, null);
                     break;
                 case Question.NumberAnswer.CompareType.EqualOrLess:
                     if (input <= n.value)
-                        return true;
+                        return (true, null);
                     break;
                 case Question.NumberAnswer.CompareType.EqualOrGreater:
                     if (input >= n.value)
-                        return true;
+                        return (true, null);
                     break;
                 case Question.NumberAnswer.CompareType.NotEqual:
                     if (input != n.value)
-                        return true;
+                        return (true, null);
                     break;
             }
-        return false;
+        return (false, null);
     }
 
     public static (bool, string) CheckForMultipleChoice(this List<Question.MultipleChoiceAnswer> multipleChoiceAnswers, int input)
