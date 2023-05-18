@@ -1,7 +1,12 @@
+//=============//
+// Made by Max //
+//=============//
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 [CreateAssetMenu(fileName = "QuizData", menuName = "QuizData/QuizData")]
 public class QuizData : ScriptableObject
@@ -58,7 +63,7 @@ public static class QuestionClass
         foreach (Question.TextAnswer t in textAnswers)
             if (t.capitalSpecific ? input == t.value : input.ToLower() == t.value.ToLower())
                 return (t.correct, t.explanation);
-        return (false, null);
+        return (false, textAnswers.Find(t => !t.correct && t.value == "")?.explanation);
     }
 
     public static (bool, string) CheckForNumber(this List<Question.NumberAnswer> numberAnswers, float input)
@@ -68,27 +73,27 @@ public static class QuestionClass
             {
                 case Question.NumberAnswer.CompareType.Equal:
                     if (input == n.value)
-                        return (true, null);
+                        return (true, n.explanation);
                     break;
                 case Question.NumberAnswer.CompareType.Less:
                     if (input < n.value)
-                        return (true, null);
+                        return (true, n.explanation);
                     break;
                 case Question.NumberAnswer.CompareType.Greater:
                     if (input > n.value)
-                        return (true, null);
+                        return (true, n.explanation);
                     break;
                 case Question.NumberAnswer.CompareType.EqualOrLess:
                     if (input <= n.value)
-                        return (true, null);
+                        return (true, n.explanation);
                     break;
                 case Question.NumberAnswer.CompareType.EqualOrGreater:
                     if (input >= n.value)
-                        return (true, null);
+                        return (true, n.explanation);
                     break;
                 case Question.NumberAnswer.CompareType.NotEqual:
                     if (input != n.value)
-                        return (true, null);
+                        return (true, n.explanation);
                     break;
             }
         return (false, null);
@@ -97,5 +102,14 @@ public static class QuestionClass
     public static (bool, string) CheckForMultipleChoice(this List<Question.MultipleChoiceAnswer> multipleChoiceAnswers, int input)
     {
         return (multipleChoiceAnswers[input].correct, multipleChoiceAnswers[input].explanation);
+    }
+
+    public static List<int> FindEveryCorrectMultipleChoice(this List<Question.MultipleChoiceAnswer> multipleChoiceAnswers)
+    {
+        List<int> indexes = new List<int>();
+        for (int i = 0; i < multipleChoiceAnswers.Count; i++)
+            if (multipleChoiceAnswers[i].correct)
+                indexes.Add(i);
+        return indexes;
     }
 }

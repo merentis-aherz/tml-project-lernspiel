@@ -1,3 +1,7 @@
+//=============//
+// Made by Max //
+//=============//
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,22 +13,28 @@ public class QuizHandler : MonoBehaviour
     [Header("Components")]
     [SerializeField] private QuizMover quizMover;
 
-    [Header("Objects")]
+    [Header("Upper Objects")]
     [SerializeField] private TMP_Text _QuizTitleText;
     [SerializeField] private TMP_Text _QuestionText, _ExplanationText;
-    [SerializeField] private Sprite _QuestionImage;
+    [SerializeField] private Sprite _QuestionSprite;
+    [SerializeField] private Image _ExplanationImage;
+
+    [Header("Lower Objects")]
+    [SerializeField] private GameObject _MultipleChoiceButtonPrefab;
     [SerializeField] private GameObject _TextInputArea, _NumberInputArea, _MultipleChoiceInputArea;
     [SerializeField] private TMP_InputField _AnswerTextInputField, _AnswerNumberInputField;
-    [SerializeField] private GameObject _MultipleChoiceButtonPrefab;
     [SerializeField] private GameObject _SubmitButton, _NextButton;
+
+    [Header("Settings")]
+    [SerializeField] private Color explanationBGColorTrue;
+    [SerializeField] private Color explanationBGColorFalse;
+    [SerializeField] private Color multipleChoiceBGColorTrue, multipleChoiceBGColorFalse;
 
     [Header("Set")]
     public QuizData quizData;
     int currentQuestion = 0;
 
-    [Header("Info")]
-    public bool quizFinished = false;
-
+    [HideInInspector] public bool quizFinished = false;
     List<GameObject> multipleChoiceButtons = new List<GameObject>();
     int multipleChoiceSelected = -1;
 
@@ -34,6 +44,9 @@ public class QuizHandler : MonoBehaviour
         SelectedQuiz selectedQuiz = FindObjectOfType<SelectedQuiz>();
         if (selectedQuiz != null)
             quizData = selectedQuiz.EquipedQuiz;
+
+        if (quizData == null)
+            throw new System.NullReferenceException("QuizData is missing!");
 
         _QuizTitleText.text = quizData.name;
 
@@ -46,58 +59,79 @@ public class QuizHandler : MonoBehaviour
         if (quizFinished)
             return;
 
-        switch (CheckAnswer())
+        //Check if correct and show explanation
+        (bool?, string) checkedValue = CheckAnswer(quizData.questions[currentQuestion]);
+        switch (checkedValue.Item1)
         {
             case true:
-                DisplayExplanation(true);
-                print("Correct Answer");
+                DisplaySolution(true, checkedValue.Item2);
                 break;
 
             case false:
-                DisplayExplanation(false);
-                print("Wrong Answer");
+                DisplaySolution(false, checkedValue.Item2);
                 break;
 
             case null:
                 return;
         }
-    }
 
-    void DisplayExplanation(bool answer)
-    {
-        //_ExplanationText.text = "null";
-        if(answer)
-        {
-            _ExplanationText.text = "Richtig!";
-        }
-        else
-        {
-            _ExplanationText.text = "Falsch!";
-        }
-        quizMover.SetDisplayExplanation(true);
-
+        //Swap buttons
         _SubmitButton.SetActive(false);
         _NextButton.SetActive(true);
     }
 
+    void DisplaySolution(bool isCorrect, string explanation)
+    {
+        //Set explanation text
+        if (explanation != null && explanation != "")
+            _ExplanationText.text = explanation;
+        else if (isCorrect)
+            _ExplanationText.text = "Correct!";
+        else
+            _ExplanationText.text = "Wrong!";
+
+        //Change explanation BG color
+        _ExplanationImage.color = isCorrect ? explanationBGColorTrue : explanationBGColorFalse;
+
+        //Chase of MulitpleChoice show correct one via BG Color
+        if (quizData.questions[currentQuestion].answerType == Question.AnswerType.MultipleChoice)
+        {
+            multipleChoiceButtons[multipleChoiceSelected].GetComponent<Image>().color = isCorrect ? multipleChoiceBGColorTrue : multipleChoiceBGColorFalse;
+
+            quizData.questions[currentQuestion].multipleChoiceAnswers.FindEveryCorrectMultipleChoice().ForEach(i =>
+            {
+                multipleChoiceButtons[i].GetComponent<Image>().color = multipleChoiceBGColorTrue;
+            });
+        }
+
+        //Show explanation box
+        quizMover.SetExplanationVisibility(true);
+    }
+
     public void OnClickNext()
     {
+        if (quizFinished)
+            return;
+
         //Clears InputFields
         _AnswerTextInputField.text = "";
         _AnswerNumberInputField.text = "";
 
-        quizMover.SetDisplayExplanation(false);
+        //Hide explanation box
+        quizMover.SetExplanationVisibility(false);
 
         currentQuestion++;
 
         if (currentQuestion < quizData.questions.Count)
         {
+            //Next question
             _SubmitButton.SetActive(true);
             _NextButton.SetActive(false);
             DisplayQuestion(quizData.questions[currentQuestion]);
         }
         else
         {
+            //End
             quizFinished = true;
             print("Quiz ended");
         }
@@ -110,7 +144,7 @@ public class QuizHandler : MonoBehaviour
 
         //Image
         if (question.image != null)
-            _QuestionImage = question.image;
+            _QuestionSprite = question.image;
 
         //Areas
         _TextInputArea.SetActive(question.answerType == Question.AnswerType.Text);
@@ -148,28 +182,28 @@ public class QuizHandler : MonoBehaviour
         multipleChoiceSelected = selected;
     }
 
-    bool? CheckAnswer()
+    (bool?, string) CheckAnswer(Question question)
     {
-        switch (quizData.questions[currentQuestion].answerType)
+        switch (question.answerType)
         {
             case Question.AnswerType.Text:
                 if (_AnswerTextInputField.text != "")
-                    return quizData.questions[currentQuestion].textAnswers.CheckForText(_AnswerTextInputField.text).Item1;
+                    return question.textAnswers.CheckForText(_AnswerTextInputField.text);
                 else
-                    return null;
+                    return (null, null);
 
             case Question.AnswerType.Number:
                 if (_AnswerNumberInputField.text != "")
-                    return quizData.questions[currentQuestion].numberAnswers.CheckForNumber(float.Parse(_AnswerNumberInputField.text)).Item1;
+                    return question.numberAnswers.CheckForNumber(float.Parse(_AnswerNumberInputField.text));
                 else
-                    return null;
+                    return (null, null);
 
             case Question.AnswerType.MultipleChoice:
                 if (multipleChoiceSelected > 0)
-                    return quizData.questions[currentQuestion].multipleChoiceAnswers.CheckForMultipleChoice(multipleChoiceSelected).Item1;
+                    return question.multipleChoiceAnswers.CheckForMultipleChoice(multipleChoiceSelected);
                 else
-                    return null;
+                    return (null, null);
         }
-        return null;
+        return (null, null);
     }
 }

@@ -24,6 +24,7 @@ public class PointSystemSinglePlayer : MonoBehaviour
 
     void Update()
     {
+        //Math by Max
         float per =  TimeSpend / (float)MaxTime;
         CurrentPointInQuestion =  (int)(MaxPointPerQuestion * per);
 

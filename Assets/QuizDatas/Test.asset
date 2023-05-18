@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac41d8ed35521141a7be2d7dcb909a6, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  questions: []
+  questions:
+  - question: 1 - 1 = ?
+    image: {fileID: 0}
+    answerType: 1
+    textAnswers: []
+    numberAnswers: []
+    multipleChoiceAnswers: []

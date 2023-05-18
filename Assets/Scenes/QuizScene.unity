@@ -1507,7 +1507,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &996440423
 MonoBehaviour:
@@ -1556,7 +1556,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64.8
+  m_fontSize: 61.8
   m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1642,7 +1642,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1076594296
 MonoBehaviour:
@@ -1789,16 +1789,21 @@ MonoBehaviour:
   _QuizTitleText: {fileID: 390278077}
   _QuestionText: {fileID: 1076594296}
   _ExplanationText: {fileID: 996440423}
-  _QuestionImage: {fileID: 0}
+  _QuestionSprite: {fileID: 0}
+  _ExplanationImage: {fileID: 1461797494}
+  _MultipleChoiceButtonPrefab: {fileID: 237242256241751295, guid: 4cca46b9f106264438bcf05ae069a0fc, type: 3}
   _TextInputArea: {fileID: 2080171084}
   _NumberInputArea: {fileID: 1429178724}
   _MultipleChoiceInputArea: {fileID: 420625678}
   _AnswerTextInputField: {fileID: 1325897643}
   _AnswerNumberInputField: {fileID: 646033694}
-  _MultipleChoiceButtonPrefab: {fileID: 237242256241751295, guid: 4cca46b9f106264438bcf05ae069a0fc, type: 3}
   _SubmitButton: {fileID: 766029037}
   _NextButton: {fileID: 466531858}
-  quizData: {fileID: 11400000, guid: 924715f56bafa4744b8a0b9305a6fa2d, type: 2}
+  explanationBGColorTrue: {r: 0, g: 0.5, b: 0, a: 1}
+  explanationBGColorFalse: {r: 0.5, g: 0, b: 0, a: 1}
+  multipleChoiceBGColorTrue: {r: 0.40156865, g: 0.8, b: 0.40156865, a: 1}
+  multipleChoiceBGColorFalse: {r: 0.8, g: 0.4, b: 0.4, a: 1}
+  quizData: {fileID: 0}
   quizFinished: 0
 --- !u!1 &1243035993
 GameObject:
